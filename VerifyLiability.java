@@ -36,7 +36,7 @@ public class VerifyLiability {
         
         inputAnswer = sc.nextLine();
         
-        if("yes".equals(inputAnswer))
+        if ("yes".equals(inputAnswer))
             System.out.println("You can be assigned to a go-kart.");
         else
         {
