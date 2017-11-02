@@ -40,7 +40,7 @@ public class VerifyLiability {
             System.out.println("You can be assigned to a go-kart.");
         else
         {
-            System.out.println("You cannot drive.");
+            System.out.println("You cannot drive a go-kart.");
             System.exit(0);
         }
            
