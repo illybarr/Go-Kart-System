@@ -1,44 +1,23 @@
 
 public class Race {
+    
+    private float startTime;
+    private Driver[] drivers;
 
-    private String name;
-    private long phoneNumber;
-
-    private Race assignedRace;
-
-    Driver() {
+    Race() {
 
     }
 
-    Driver(String name) 
-    {
-            this.name=name;
+    Race(float startTime) {
+        this.startTime=startTime;
+    }
+    
+    void setStartTime(float time) {
+        this.startTime = time;
     }
 
-    Driver(String name, long number) 
-    {
-            this.name = name;
-            this.phoneNumber = number;
+    float getStartTime() {
+        return startTime;
     }
-
-    String getName() 
-    {
-        return name;
-    }
-
-    void setName(String name) 
-    {
-            this.name=name;
-    }
-
-    long getPhoneNumber() 
-    {
-
-        return phoneNumber;
-    }
-
-    void setPhoneNumber(long number) 
-    {
-        this.phoneNumber=number;
-    }
+    
 }
