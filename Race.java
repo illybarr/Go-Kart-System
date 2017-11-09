@@ -1,26 +1,44 @@
-import java.util.Date;
-
 
 public class Race {
 
-    private Date startTime;
+    private String name;
+    private long phoneNumber;
 
-    private Driver[] drivers;
+    private Race assignedRace;
 
-    Race() {
-
-    }
-
-    Race(Date startTime) {
+    Driver() {
 
     }
 
-    Date getStartTime() {
-
-        return startTime;
+    Driver(String name) 
+    {
+            this.name=name;
     }
 
-    void setStartTime(Date time) {
+    Driver(String name, long number) 
+    {
+            this.name = name;
+            this.phoneNumber = number;
+    }
 
+    String getName() 
+    {
+        return name;
+    }
+
+    void setName(String name) 
+    {
+            this.name=name;
+    }
+
+    long getPhoneNumber() 
+    {
+
+        return phoneNumber;
+    }
+
+    void setPhoneNumber(long number) 
+    {
+        this.phoneNumber=number;
     }
 }
