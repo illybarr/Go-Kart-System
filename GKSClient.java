@@ -8,16 +8,26 @@ public class GKSClient {
     public static void main(String[] args) {
         try {
             client = new Socket("localhost", 8765);
-            System.out.println(client.isConnected());
 
             OutputStream outToServer = client.getOutputStream();
             DataOutputStream out = new DataOutputStream(outToServer);
 
-            out.writeUTF("Hello from " + client.getLocalSocketAddress());
             InputStream inFromServer = client.getInputStream();
-            DataInputStream in = new DataInputStream(inFromServer);
+            DataInputStream serverIn = new DataInputStream(inFromServer);
 
-            System.out.println("Server says " + in.readUTF());
+            //out.writeUTF("Hello from " + client.getLocalSocketAddress());
+
+            //System.out.println("Server says " + serverIn.readUTF());
+
+            System.out.println("------ Menu ------");
+            System.out.println("1: Create new driver");
+            System.out.println("2: Assign kart to driver");
+            System.out.println("3: Schedule driver for race");
+            System.out.println("Enter a menu option: ");
+            BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+            in.readLine();
+
+            out.writeUTF(in.toString());
 
         } catch (IOException e) {
             e.printStackTrace();
