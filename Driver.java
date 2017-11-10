@@ -1,13 +1,12 @@
 
-public class Driver extends Race{
+public class Driver {
     
-    private String name;
-    private long phoneNumber;
-
-    private Race assignedRace;
+    public String name;
+    public long phoneNumber;
+    public Race assignedRace;
 
     Driver() {
-
+        System.out.println("Driver was created.");    //test string
     }
 
     Driver(String name) 
