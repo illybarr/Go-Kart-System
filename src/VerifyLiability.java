@@ -34,7 +34,7 @@ public class VerifyLiability {
             //change the path to wherever the textfile is located 
             //this code is temporary and will be changed
             FileReader readfile =
-            new FileReader("C:\\Users\\barrerai9\\Documents\\NetBeansProjects\\GoKartDemo\\src\\ClientInformation.txt");
+            new FileReader("/ClientInformation.txt");
  
              int i;
              while ((i=readfile.read()) != -1) 

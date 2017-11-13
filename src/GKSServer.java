@@ -20,7 +20,7 @@ public class GKSServer extends Thread {
                         serverSocket.getLocalPort() + "...");
                 Socket server = serverSocket.accept();
 
-                System.out.println("Just connected to employee terminal " + server.getRemoteSocketAddress());
+                System.out.println(server.getRemoteSocketAddress() + " just connected to the server.");
                 DataInputStream in = new DataInputStream(server.getInputStream());
 
                 while (true) {
@@ -39,13 +39,15 @@ public class GKSServer extends Thread {
     }
 
     public static void main(String[] args) {
-        System.out.println("running");
+        System.out.println("Starting server...");
         Thread t = null;
         try {
             t = new GKSServer();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        System.out.println("Server started.");
         t.start();
     }
 }

@@ -25,9 +25,8 @@ public class GKSClient {
             System.out.println("3: Schedule driver for race");
             System.out.println("Enter a menu option: ");
             BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-            in.readLine();
 
-            out.writeUTF(in.toString());
+            out.writeUTF(in.readLine());
 
         } catch (IOException e) {
             e.printStackTrace();
