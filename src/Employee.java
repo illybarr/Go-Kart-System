@@ -10,26 +10,44 @@
  */
 
 public class Employee {
-    
-    String firstName, lastName;
-    int phoneNumber;
-    
-    public Employee(String firstName, String lastName, int phoneNumber) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
+
+    String name;
+    int ID;
+
+    public Employee(String name)
+    {
+        this.name=name;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public Employee(String name, int ID) {
+        this.name = name;
+        this.ID = ID;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getName() {
+        return name;
     }
 
-    public int getPhoneNumber() {
-        return phoneNumber;
+    public void setName(String name) {
+        this.name = name;
     }
-  
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    void scheduleDriver()
+    {
+
+    }
+
+    void assignDriver()
+    {
+
+    }
+
 }

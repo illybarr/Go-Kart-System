@@ -1,45 +1,44 @@
 
-public class Driver extends Race{
-    
-    private String name;
-    private long phoneNumber;
+public class Driver {
 
-    private Race assignedRace;
+    public String name;
+    public long phoneNumber;
+    public Race assignedRace;
 
     Driver() {
-
+        System.out.println("Driver was created.");    //test string
     }
 
-    Driver(String name) 
+    Driver(String name)
     {
             this.name=name;
     }
 
-    Driver(String name, long number) 
+    Driver(String name, long number)
     {
             this.name = name;
             this.phoneNumber = number;
     }
 
-    String getName() 
+    String getName()
     {
         return name;
     }
 
-    void setName(String name) 
+    void setName(String name)
     {
             this.name=name;
     }
 
-    long getPhoneNumber() 
+    long getPhoneNumber()
     {
 
         return phoneNumber;
     }
 
-    void setPhoneNumber(long number) 
+    void setPhoneNumber(long number)
     {
         this.phoneNumber=number;
     }
-    
+
 }
