@@ -11,11 +11,12 @@ There is no specific order in which to run the files as of now.
 
 
 Implemented:
-
+-Basic structure of all classes with getters and setters
 
 
 
 Yet to be implemented:
 -Assign Karts Functions
 -Assing drivers to karts Function
-
+-Schedule drivers
+-Full functionality of the client/server models
