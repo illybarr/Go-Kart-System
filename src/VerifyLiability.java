@@ -30,7 +30,9 @@ public class VerifyLiability {
         if ("yes".equals(inputAnswer))
         {
             System.out.println("\nHere are all the people who can drive: ");
+          
             //change the path to wherever the textfile is located 
+            //this code is temporary and will be changed
             FileReader readfile =
             new FileReader("C:\\Users\\barrerai9\\Documents\\NetBeansProjects\\GoKartDemo\\src\\ClientInformation.txt");
  
