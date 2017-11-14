@@ -42,7 +42,10 @@ public class Employee {
 
     void scheduleDriver()
     {
-
+        Random ran = new Random();
+        int time = ran.nextInt(1)+8;
+        
+        System.out.println("\nScheduled Race at " + time + ":00 PM");
     }
 
     void assignDriver()
