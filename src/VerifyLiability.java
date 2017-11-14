@@ -14,6 +14,8 @@ public class VerifyLiability {
         String inputAnswer;
         int inputDrivers;
         
+        Employee kart1 = new Employee();
+        
         Scanner sc = new Scanner(System.in);
         
         System.out.println("Drivers must read this Liability Form first:");
@@ -53,6 +55,8 @@ public class VerifyLiability {
             {
                 System.out.println(values[x]);
             }
+            
+            kart1.scheduleDriver();
         }
         else
         {
