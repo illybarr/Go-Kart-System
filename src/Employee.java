@@ -9,6 +9,8 @@
  * @author barrerai9
  */
 
+import Java.util.Random;
+
 public class Employee {
 
     String name;
