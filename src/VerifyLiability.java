@@ -1,19 +1,16 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+//this method cannot run until implemented in the main class in Client
 
 public class VerifyLiability {
 
-    /**
-     * @param args the command line arguments
-     * @throws java.lang.Exception
-     */
-    public static void main(String[] args) throws Exception {
-        // TODO code application logic here
-        
-        String inputAnswer;
+    public void verifyLiability() throws FileNotFoundException
+    {
+    	String inputAnswer;
         int inputDrivers;
-        
+
         Employee kart1 = new Employee();
         
         Scanner sc = new Scanner(System.in);
@@ -36,11 +33,13 @@ public class VerifyLiability {
         {
             System.out.println("How many total people are driving go-karts?");
             inputDrivers = sc.nextInt();
+            
           
             //change the path to wherever the textfile is located on YOUR computer
-            Scanner readFile = new Scanner(new File("C:\\Users\\barrerai9\\Documents\\NetBeansProjects\\Go-Kart System\\src\\ClientInformation.txt"));
+            Scanner readFile = new Scanner(new File("C:\\Users\\Iliana\\Music\\Go-Kart-System-master\\src\\ClientInformation.txt"));
  
              int count = 0;
+             int kartCount = 1;
              String[] values = new String[12];
              
              while(readFile.hasNext())
@@ -49,21 +48,26 @@ public class VerifyLiability {
                  count++;
              }
              
-            System.out.println("Here is the customer information \nof the customers who can drive:");
+            System.out.println("Here is the customer information \nof the customers who can drive ");
+            System.out.println("and the karts assigned to each:");
             System.out.println("---------------------------------------");
             for(int x=0; x<inputDrivers; x++)
             {
-                System.out.println(values[x]);
+                System.out.println(values[x] + " - #" + kartCount);
+                kartCount++;
             }
             
-            kart1.scheduleDriver();
+            kart1.scheduleRace();			//this should be implemented in the main class of the Server
+            									//so it can be called by the Client
+            
+            
+            
+            readFile.close();
         }
         else
         {
             System.out.println("They cannot drive a go-kart.");
             System.exit(0);
         }
-           
     }
-    
 }
