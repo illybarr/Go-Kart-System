@@ -1,4 +1,3 @@
-
 public class Kart {
 
     private int kartNumber;
