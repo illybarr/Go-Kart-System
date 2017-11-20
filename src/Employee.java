@@ -1,5 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
+* To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -9,12 +8,17 @@
  * @author barrerai9
  */
 
-import Java.util.Random;
+import java.util.Random;
 
 public class Employee {
 
     String name;
     int ID;
+    
+    public Employee()
+    {
+    	
+    }
 
     public Employee(String name)
     {
@@ -42,17 +46,21 @@ public class Employee {
         this.ID = ID;
     }
 
-    void scheduleDriver()
+    //scheduleDriver copied in Race class
+    //assignDriver copied in Kart class
+    
+    void scheduleRace()
     {
-        Random ran = new Random();
-        int time = ran.nextInt(1)+8;
+    	Random ran = new Random();
+        int time = ran.nextInt(8)+1;
         
         System.out.println("\nScheduled Race at " + time + ":00 PM");
     }
-
-    void assignDriver()
-    {
-
-    }
+    
+    //this function is not necessary since the karts are already assigned in the verifyLiability method
+//    void assignDriver()
+//    {
+//    	System.out.println("Each driver will be assigned a kart: ");
+//    }
 
 }
