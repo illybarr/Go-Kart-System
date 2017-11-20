@@ -1,8 +1,10 @@
+import java.util.Random;
 
 public class Race {
     
     private float startTime;
     private Driver[] drivers;
+    
 
     Race() {
 
@@ -18,6 +20,14 @@ public class Race {
 
     float getStartTime() {
         return startTime;
+    }
+    
+    void scheduleRace()
+    {
+    	Random ran = new Random();
+        int time = ran.nextInt(8)+1;
+        
+        System.out.println("\nScheduled Race at " + time + ":00 PM");
     }
     
 }
