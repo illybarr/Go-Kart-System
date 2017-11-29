@@ -1,17 +1,18 @@
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class GKSServer extends Thread {
+
+    //Driver drivers[] = new Driver[12];
+    ArrayList<Driver> drivers = new ArrayList<Driver>();
 
     private ServerSocket serverSocket;
 
     public GKSServer() throws IOException {
         serverSocket = new ServerSocket(8765);
     }
-
 
     public void run() {
         while(true) {
@@ -22,12 +23,26 @@ public class GKSServer extends Thread {
 
                 System.out.println(server.getRemoteSocketAddress() + " just connected to the server.");
                 DataInputStream in = new DataInputStream(server.getInputStream());
+                //BufferedReader in = new BufferedReader(new InputStreamReader(server.getInputStream()));
 
                 while (true) {
                     System.out.println(in.readUTF());
+                    int command = Integer.parseInt(in.readLine());
+                    System.out.println(command);
                     DataOutputStream out = new DataOutputStream(server.getOutputStream());
                     out.writeUTF("Thank you for connecting to " + server.getLocalSocketAddress()
                             + "\nGoodbye!");
+
+                    switch(command) {
+                        case 1:
+                            drivers.add(new Driver());
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                    }
+
                 }
                 //server.close();
             }

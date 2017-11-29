@@ -3,7 +3,7 @@ import java.net.Socket;
 
 public class GKSClient {
 
-    static Socket client;
+    private static Socket client;
 
     public static void main(String[] args) {
         try {
@@ -19,14 +19,36 @@ public class GKSClient {
 
             //System.out.println("Server says " + serverIn.readUTF());
 
+            // TODO Include the menu system as a loop
+
             System.out.println("------ Menu ------");
             System.out.println("1: Create new driver");
             System.out.println("2: Assign kart to driver");
             System.out.println("3: Schedule driver for race");
+            System.out.println("4: Exit");
             System.out.println("Enter a menu option: ");
             BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
-            out.writeUTF(in.readLine());
+
+            // TODO Only accept numbers, retry if not a number
+            int command = Integer.parseInt(in.readLine());
+            String arguments = Integer.toString(command);
+
+            switch(command) {
+                case 1:
+                    System.out.println("Enter the drivers name: ");
+                    arguments = arguments + "\n" + in.readLine();
+                    System.out.println("Enter a phone number: ");
+                    arguments = arguments + "\n" + in.readLine();
+                    out.writeUTF(arguments);
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+            }
+
+            //out.writeUTF(in.readLine());
 
         } catch (IOException e) {
             e.printStackTrace();

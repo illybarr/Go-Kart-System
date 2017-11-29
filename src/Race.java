@@ -13,7 +13,7 @@ public class Race {
     Race(float startTime) {
         this.startTime=startTime;
     }
-    
+
     void setStartTime(float time) {
         this.startTime = time;
     }
