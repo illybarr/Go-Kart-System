@@ -25,7 +25,8 @@ public class GKSClient {
             System.out.println("1: Create new driver");
             System.out.println("2: Assign kart to driver");
             System.out.println("3: Schedule driver for race");
-            System.out.println("4: Exit");
+            System.out.println("4: Load drivers from file");
+            System.out.println("5: Exit");
             System.out.println("Enter a menu option: ");
             BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
@@ -40,11 +41,21 @@ public class GKSClient {
                     arguments = arguments + "\n" + in.readLine();
                     System.out.println("Enter a phone number: ");
                     arguments = arguments + "\n" + in.readLine();
-                    out.writeUTF(arguments);
+                    out.writeBytes(arguments);
                     break;
                 case 2:
+                    System.out.println("Enter the drivers id number: ");
+                    arguments = arguments + "\n" + in.readLine();
+                    System.out.println("Enter a race id: ");
+                    arguments = arguments + "\n" + in.readLine();
+                    out.writeBytes(arguments);
                     break;
                 case 3:
+
+                    break;
+                case 4:
+                    System.out.println("Loading drivers from file...");
+                    out.writeBytes(arguments);
                     break;
             }
 

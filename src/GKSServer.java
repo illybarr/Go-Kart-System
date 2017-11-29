@@ -22,24 +22,28 @@ public class GKSServer extends Thread {
                 Socket server = serverSocket.accept();
 
                 System.out.println(server.getRemoteSocketAddress() + " just connected to the server.");
-                DataInputStream in = new DataInputStream(server.getInputStream());
-                //BufferedReader in = new BufferedReader(new InputStreamReader(server.getInputStream()));
+                //DataInputStream in = new DataInputStream(server.getInputStream());
+                BufferedReader in = new BufferedReader(new InputStreamReader(server.getInputStream()));
 
                 while (true) {
-                    System.out.println(in.readUTF());
-                    int command = Integer.parseInt(in.readLine());
-                    System.out.println(command);
+                    //System.out.println(in.readLine().toString());
+                    int command = Integer.valueOf(in.readLine().toString());
                     DataOutputStream out = new DataOutputStream(server.getOutputStream());
                     out.writeUTF("Thank you for connecting to " + server.getLocalSocketAddress()
                             + "\nGoodbye!");
 
                     switch(command) {
                         case 1:
-                            drivers.add(new Driver());
+                            drivers.add(new Driver(in.readLine().toString()));
                             break;
                         case 2:
                             break;
                         case 3:
+                            break;
+                        case 4:
+                            // Call method to load drivers from file
+                            break;
+                        case 5:
                             break;
                     }
 
