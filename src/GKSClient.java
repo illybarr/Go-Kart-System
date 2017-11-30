@@ -3,7 +3,7 @@ import java.net.Socket;
 
 public class GKSClient {
 
-    private static Socket client;
+    static Socket client;
 
     public static void main(String[] args) {
         try {
@@ -15,52 +15,33 @@ public class GKSClient {
             InputStream inFromServer = client.getInputStream();
             DataInputStream serverIn = new DataInputStream(inFromServer);
 
-            //out.writeUTF("Hello from " + client.getLocalSocketAddress());
-
-            //System.out.println("Server says " + serverIn.readUTF());
-
-            // TODO Include the menu system as a loop
-
             System.out.println("------ Menu ------");
             System.out.println("1: Create new driver");
             System.out.println("2: Assign kart to driver");
             System.out.println("3: Schedule driver for race");
-            System.out.println("4: Load drivers from file");
-            System.out.println("5: Exit");
+            System.out.println("4: Create race from database of existing members");
             System.out.println("Enter a menu option: ");
             BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-
-
-            // TODO Only accept numbers, retry if not a number
             int command = Integer.parseInt(in.readLine());
-            String arguments = Integer.toString(command);
 
-            switch(command) {
-                case 1:
-                    System.out.println("Enter the drivers name: ");
-                    arguments = arguments + "\n" + in.readLine();
-                    System.out.println("Enter a phone number: ");
-                    arguments = arguments + "\n" + in.readLine();
-                    out.writeBytes(arguments);
-                    break;
-                case 2:
-                    System.out.println("Enter the drivers id number: ");
-                    arguments = arguments + "\n" + in.readLine();
-                    System.out.println("Enter a race id: ");
-                    arguments = arguments + "\n" + in.readLine();
-                    out.writeBytes(arguments);
-                    break;
-                case 3:
-
-                    break;
+            out.writeUTF("\nYou have chosen option" + command);
+            //String optionEntered = in.readLine();
+            //out.writeUTF(" 1 Hello from " + client.getLocalSocketAddress());
+            //System.out.println(" 2 Server says " + serverIn.readUTF());
+            
+            
+            //String arguments = Integer.toString(command);
+            
+            switch(command)
+            {
                 case 4:
                     out.writeUTF("\nThe drivers will be chosen from a database of existing members.\n");
                     VerifyLiability checkLiable = new VerifyLiability();
                     out.writeUTF("All drivers have accepted liability.");
                     checkLiable.verifyLiability();
+           
             }
 
-            //out.writeUTF(in.readLine());
 
         } catch (IOException e) {
             e.printStackTrace();
