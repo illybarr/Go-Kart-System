@@ -2,6 +2,9 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 
 public class GKSServer extends Thread {
 
@@ -70,3 +73,4 @@ public class GKSServer extends Thread {
         t.start();
     }
 }
+
