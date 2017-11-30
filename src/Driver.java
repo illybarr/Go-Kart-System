@@ -2,6 +2,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.Random;
 
 
 public class Driver {
@@ -45,13 +46,13 @@ public class Driver {
     {
         this.phoneNumber=number;
     }
-    
     void readExistingMembers() throws FileNotFoundException
     {
         //CHANGE the path to wherever the textfile is located on YOUR computer
             Scanner readFile = new Scanner(new File("C:\\Users\\barrerai9\\Documents\\NetBeansProjects\\Karting System\\src\\ClientInformation.txt"));
  
             Scanner sc = new Scanner(System.in);
+            Random ran = new Random();
             
             System.out.println("How many total people are driving go-karts?");
             inputDrivers = sc.nextInt();
@@ -59,6 +60,7 @@ public class Driver {
              int count = 0;
              int kartCount = 1;
              String[] values = new String[12];
+             double[] times = {58.742, 57.69, 49.041, 50.108, 43.403, 44.846, 57.574, 53.514, 43.644, 53.234, 45.113, 56.258};
              
              while(readFile.hasNext())
              {
@@ -79,12 +81,12 @@ public class Driver {
             kart1.scheduleRace();
             System.out.println("");
                        
+            
             System.out.println("Names\t\t\t Phone Number    Race Time");
             System.out.println("---------------------------------------------------");
             for(int x=0; x<inputDrivers; x++)
             {
-                System.out.println(values[x] + " - ");
-                kartCount++;
+                System.out.println(values[x] + "   " + times[x]);
             }
                                                                                 
     }
