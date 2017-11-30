@@ -45,9 +45,6 @@ public class Employee {
     public void setID(int ID) {
         this.ID = ID;
     }
-
-    //scheduleDriver copied in Race class
-    //assignDriver copied in Kart class
     
     void scheduleRace()
     {
@@ -56,11 +53,5 @@ public class Employee {
         
         System.out.println("\nScheduled Race at " + time + ":00 PM");
     }
-    
-    //this function is not necessary since the karts are already assigned in the verifyLiability method
-//    void assignDriver()
-//    {
-//    	System.out.println("Each driver will be assigned a kart: ");
-//    }
 
 }
