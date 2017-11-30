@@ -1,21 +1,17 @@
-import java.io.*;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.ArrayList;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 public class GKSServer extends Thread {
-
-    //Driver drivers[] = new Driver[12];
-    ArrayList<Driver> drivers = new ArrayList<Driver>();
 
     private ServerSocket serverSocket;
 
     public GKSServer() throws IOException {
         serverSocket = new ServerSocket(8765);
     }
+
 
     public void run() {
         while(true) {
@@ -25,31 +21,17 @@ public class GKSServer extends Thread {
                 Socket server = serverSocket.accept();
 
                 System.out.println(server.getRemoteSocketAddress() + " just connected to the server.");
-                //DataInputStream in = new DataInputStream(server.getInputStream());
-                BufferedReader in = new BufferedReader(new InputStreamReader(server.getInputStream()));
+                DataInputStream in = new DataInputStream(server.getInputStream());
 
                 while (true) {
-                    //System.out.println(in.readLine().toString());
-                    int command = Integer.valueOf(in.readLine().toString());
+                    System.out.println(in.readUTF());
                     DataOutputStream out = new DataOutputStream(server.getOutputStream());
-                    out.writeUTF("Thank you for connecting to " + server.getLocalSocketAddress()
-                            + "\nGoodbye!");
-
-                    switch(command) {
-                        case 1:
-                            drivers.add(new Driver(in.readLine().toString()));
-                            break;
-                        case 2:
-                            break;
-                        case 3:
-                            break;
-                        case 4:
-                            // Call method to load drivers from file
-                            break;
-                        case 5:
-                            break;
-                    }
-
+                    
+                    //VerifyLiability checkLiable = new VerifyLiability();
+                    //out.writeUTF(" 3 Thank you for connecting to " + server.getLocalSocketAddress()
+                            //+ "\nGoodbye!");
+                    in.readUTF();
+                            
                 }
                 //server.close();
             }
@@ -73,4 +55,3 @@ public class GKSServer extends Thread {
         t.start();
     }
 }
-
