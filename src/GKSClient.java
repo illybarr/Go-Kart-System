@@ -54,9 +54,10 @@ public class GKSClient {
 
                     break;
                 case 4:
-                    System.out.println("Loading drivers from file...");
-                    out.writeBytes(arguments);
-                    break;
+                    out.writeUTF("\nThe drivers will be chosen from a database of existing members.\n");
+                    VerifyLiability checkLiable = new VerifyLiability();
+                    out.writeUTF("All drivers have accepted liability.");
+                    checkLiable.verifyLiability();
             }
 
             //out.writeUTF(in.readLine());
