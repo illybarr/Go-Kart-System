@@ -1,6 +1,7 @@
 import java.io.*;
 import java.net.Socket;
 
+
 public class GKSClient {
 
     private static Socket client;
@@ -35,6 +36,8 @@ public class GKSClient {
             int command = Integer.parseInt(in.readLine());
             String arguments = Integer.toString(command);
 
+            out.writeUTF("\nYou have chosen option" + command);
+            
             switch(command) {
                 case 1:
                     System.out.println("Enter the drivers name: ");
@@ -53,11 +56,10 @@ public class GKSClient {
                 case 3:
                     break;
                 case 4:
+                    out.writeUTF("\nThe drivers will be chosen from a database of existing members.\n");
                     VerifyLiability checkLiable = new VerifyLiability();
-                    checkLiable.verifyLiability();
-                    out.writeUTF("Option 4 was chosen. Drivers will be read from the database.");
                     out.writeUTF("All drivers have accepted liability.");
-                    break;
+                    checkLiable.verifyLiability();
             }
 
             //out.writeUTF(in.readLine());
