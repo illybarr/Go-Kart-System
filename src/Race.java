@@ -1,29 +1,30 @@
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Random;
+import java.time.LocalTime;
 
 public class Race {
     
-    private float startTime;
+    private LocalTime startTime;
+    private static LocalTime firstRaceTime = LocalTime.now();
     private int id;
     private static int lastId = 0;
     private ArrayList<Driver> drivers = new ArrayList<Driver>();
 
     Race() {
         this.id = ++lastId;
-        System.out.println("Created new Race with ID number of: " + id);
+        firstRaceTime = firstRaceTime.plusMinutes(20);
+        startTime = firstRaceTime;
+        System.out.println("Created new Race with ID number of " + id + " and starting time of " + getStartTimeSttring());
     }
 
-    Race(float startTime) {
-        this();
-        this.startTime=startTime;
-    }
-
-    void setStartTime(float time) {
-        this.startTime = time;
-    }
-
-    float getStartTime() {
+    public LocalTime getStartTime() {
         return startTime;
+    }
+
+    public String getStartTimeSttring() {
+        String timeString = startTime.toString();
+        return timeString.substring(0, timeString.lastIndexOf(':'));
     }
 
     public int getId() {

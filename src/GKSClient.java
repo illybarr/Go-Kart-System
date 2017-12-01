@@ -38,6 +38,8 @@ public class GKSClient {
                 int command = Integer.parseInt(consoleReader.readLine());
                 String request = Integer.toString(command); // Create request to be built and sent to server
 
+                String[] response;
+
                 switch (command) {
                     case 1:
                         System.out.print("Enter the drivers name: ");
@@ -60,7 +62,8 @@ public class GKSClient {
                         break;
                     case 4:
                         serverOut.writeUTF(request);
-                        System.out.println("Created new Race with ID of " + serverIn.readUTF());
+                        response = serverIn.readUTF().split("\\r?\\n"); // Parse request data
+                        System.out.println("Created new Race with ID of " + response[0] + " and starting time of " + response[1]);
                         System.out.println();
                         break;
                     case 5:
@@ -74,7 +77,7 @@ public class GKSClient {
                     case 7:
                         break;
                     case 8:
-                        System.out.println("Quitting the Emplyee Terminal...");
+                        System.out.println("Quitting the Empolyee Terminal...");
                         System.exit(0);
                         break;
                 }

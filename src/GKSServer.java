@@ -54,7 +54,7 @@ public class GKSServer extends Thread {
                         case 4:
                             Race race = new Race();
                             races.add(race);
-                            outToClient.writeUTF(String.valueOf(race.getId()));
+                            outToClient.writeUTF(String.valueOf(race.getId()) + '\n' + race.getStartTimeSttring());
                             break;
                         case 5:
                             break;
