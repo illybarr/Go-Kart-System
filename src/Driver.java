@@ -12,6 +12,7 @@ public class Driver {
     private int id;
     private static int lastId = 0;
     private Race assignedRace;
+    private Kart assignedKart;
 
     public static int inputDrivers;
 
@@ -56,6 +57,18 @@ public class Driver {
 
     public void setAssignedRace(Race race) {
         assignedRace = race;
+    }
+
+    public Race getAssignedRace() {
+        return assignedRace;
+    }
+
+    public void setAssignedKart(Kart kart) {
+        assignedKart = kart;
+    }
+
+    public Kart getAssignedKart() {
+        return assignedKart;
     }
 
     public int getId() {

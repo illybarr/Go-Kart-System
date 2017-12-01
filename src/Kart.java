@@ -1,13 +1,17 @@
 public class Kart {
 
     private int kartNumber;
-    private static int kartLimit = 12;
+    private static int lastKartNumber = 0;
+    private Driver driver;
+    public static int kartLimit = 12;
 
     Kart() {
-        System.out.println("Kart was created"); //test string
+        kartNumber = ++lastKartNumber;
+        //System.out.println("A new Kart was created with number " + kartNumber);
     }
 
     Kart(int kartNumber) {
+        this();
         this.kartNumber = kartNumber;
     }
 
@@ -27,5 +31,11 @@ public class Kart {
         Kart.kartLimit = kartLimit;
     }
 
+    public void assignDriver(Driver driver) {
+        this.driver = driver;
+    }
 
+    public Driver getDriver() {
+        return driver;
+    }
 }

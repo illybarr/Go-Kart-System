@@ -28,9 +28,9 @@ public class GKSClient {
                 System.out.println("2: Assign Kart to Driver");
                 System.out.println("3: Schedule Driver for Race");
                 System.out.println("4: Create new Race");
-                System.out.println("5: Load drivers from file (demo mode)");
-                System.out.println("6: List Drivers");
-                System.out.println("7: List Races");
+                System.out.println("5: Load drivers from file");
+                System.out.println("6: List Race Information");
+                System.out.println("7: List Driver");
                 System.out.println("8: Exit");
                 System.out.print("Enter a menu option: ");
 
@@ -51,6 +51,14 @@ public class GKSClient {
                         System.out.println();
                         break;
                     case 2:
+                        System.out.print("Enter the Kart number: ");
+                        request = request + "\n" + consoleReader.readLine();
+                        System.out.print("Enter the drivers ID number: ");
+                        request = request + "\n" + consoleReader.readLine();
+                        serverOut.writeUTF(request); // Send request to server
+                        response = serverIn.readUTF().split("\\r?\\n"); // Parse request data
+                        System.out.println("Assigned Driver with ID of " + response[0] + " to Kart number " + response[1]);
+                        System.out.println();
                         break;
                     case 3:
                         System.out.print("Enter the drivers ID number: ");
@@ -73,6 +81,7 @@ public class GKSClient {
                         checkLiable.verifyLiability();
                         break;
                     case 6:
+                        serverOut.writeUTF(request);
                         break;
                     case 7:
                         break;

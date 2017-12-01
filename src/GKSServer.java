@@ -12,6 +12,7 @@ public class GKSServer extends Thread {
 
     ArrayList<Race> races = new ArrayList<Race>();
     ArrayList<Driver> drivers = new ArrayList<Driver>();
+    ArrayList<Kart> karts = new ArrayList<Kart>();
 
     private ServerSocket serverSocket;
 
@@ -20,6 +21,7 @@ public class GKSServer extends Thread {
     }
 
     public void run() {
+        createKarts();
         while(true) {
             try {
                 System.out.println("Waiting for employee terminal to connect on port " + serverSocket.getLocalPort() + "...");
@@ -46,7 +48,8 @@ public class GKSServer extends Thread {
                                 outToClient.writeUTF(String.valueOf(drivers.get(drivers.size()-1).getId()));
                             break;
                         case 2:
-
+                            if(assignKartToDriver(Integer.valueOf(request[1]), Integer.parseInt(request[2])))
+                                outToClient.writeUTF(String.valueOf(request[1]) + '\n' + request[2]);
                             break;
                         case 3:
                             assignDriverToRace(Integer.valueOf(request[1]), Integer.parseInt(request[2]));
@@ -90,6 +93,40 @@ public class GKSServer extends Thread {
         t.start();
     }
 
+    private void createKarts() {
+        for(int i=0; i < Kart.kartLimit; i++) {
+            karts.add(new Kart());
+        }
+    }
+
+    private boolean assignKartToDriver(int kartNumber, int driverId) {
+        int kartIndex = -1;
+        int driverIndex = -1;
+
+        for(Kart k : karts) {
+            if(k.getKartNumber() == kartNumber)
+                kartIndex = karts.indexOf(k);
+        }
+        if(kartIndex == -1) {
+            System.out.println("Kart could not be found");
+            return false;
+        }
+
+        for(Driver d : drivers) {
+            if(d.getId() == driverId)
+                driverIndex = drivers.indexOf(d);
+        }
+        if(driverIndex == -1) {
+            System.out.println("Driver could not be found");
+            return false;
+        }
+
+        drivers.get(driverIndex).setAssignedKart(karts.get(kartIndex));
+        karts.get(kartIndex).assignDriver(drivers.get(driverIndex));
+        System.out.println("Assigned driver with ID "+ driverId + " to Kart number " + kartNumber);
+        return true;
+    }
+
     private void assignDriverToRace(int driverId, int raceId) {
         int driverIndex = -1;
         int raceIndex = -1;
@@ -99,7 +136,7 @@ public class GKSServer extends Thread {
                 driverIndex = drivers.indexOf(d);
         }
         if(driverIndex == -1) {
-            System.out.println("Driver could not be foudnd");
+            System.out.println("Driver could not be found");
             return;
         }
 
@@ -108,7 +145,7 @@ public class GKSServer extends Thread {
                 raceIndex = races.indexOf(r);
         }
         if(raceIndex == -1) {
-            System.out.println("Race could not be foudnd");
+            System.out.println("Race could not be found");
             return;
         }
 
