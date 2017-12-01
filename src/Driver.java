@@ -78,7 +78,7 @@ public class Driver {
     void readExistingMembers() throws FileNotFoundException
     {
         //CHANGE the path to wherever the textfile is located on YOUR computer
-            Scanner readFile = new Scanner(new File("C:\\Users\\barrerai9\\Documents\\NetBeansProjects\\Karting System\\src\\ClientInformation.txt"));
+            Scanner readFile = new Scanner(new File("src/ClientInformation.txt"));
  
             Scanner sc = new Scanner(System.in);
             Random ran = new Random();
@@ -113,8 +113,8 @@ public class Driver {
                kartCount++;
            }
             
-           sc.close();
-           readFile.close();
+           //sc.close();
+           //readFile.close();
                                                                                 
     }
 

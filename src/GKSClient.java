@@ -75,8 +75,9 @@ public class GKSClient {
                         System.out.println();
                         break;
                     case 5:
-                        serverOut.writeUTF("\nThe drivers will be chosen from a database of existing members.\n");
+                        System.out.println("\nThe drivers will be chosen from a database of existing members.\n");
                         VerifyLiability checkLiable = new VerifyLiability();
+                        serverOut.writeUTF(request);
                         serverOut.writeUTF("All drivers have accepted liability.");
                         checkLiable.verifyLiability();
                         break;
