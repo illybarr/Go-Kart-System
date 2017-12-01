@@ -3,14 +3,18 @@ import java.util.Random;
 public class Race {
     
     private float startTime;
+    private int id;
+    private int lastId = 0;
     private Driver[] drivers;
     
 
     Race() {
-
+        this.id = ++lastId;
+        System.out.println("Created new Race with ID number of: " + id);
     }
 
     Race(float startTime) {
+        this();
         this.startTime=startTime;
     }
 

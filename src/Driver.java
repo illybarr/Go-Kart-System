@@ -9,21 +9,28 @@ public class Driver {
 
     public String name;
     public long phoneNumber;
+    private int id;
+    private static int lastId = 0;
+
     public Race assignedRace;
     public static int inputDrivers;
 
     Driver() {
+        this.id = ++lastId;
+        System.out.println("Created new Driver with ID number of: " + id);
     }
 
     Driver(String name)
     {
-            this.name=name;
+        this();
+        this.name=name;
     }
 
     Driver(String name, long number)
     {
-            this.name = name;
-            this.phoneNumber = number;
+        this();
+        this.name = name;
+        this.phoneNumber = number;
     }
 
     String getName()
@@ -46,6 +53,11 @@ public class Driver {
     {
         this.phoneNumber=number;
     }
+
+    public int getId() {
+        return id;
+    }
+
     void readExistingMembers() throws FileNotFoundException
     {
         //CHANGE the path to wherever the textfile is located on YOUR computer
