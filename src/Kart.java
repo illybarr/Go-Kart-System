@@ -19,11 +19,11 @@ public class Kart {
         this.kartNumber = kartNumber;
     }
 
-    public static int getKartLimit() {
+    public int getKartLimit() {
         return kartLimit;
     }
 
-    public static void setKartLimit(int kartLimit) {
+    public void setKartLimit(int kartLimit) {
         Kart.kartLimit = kartLimit;
     }
 

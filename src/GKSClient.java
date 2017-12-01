@@ -29,7 +29,9 @@ public class GKSClient {
                 System.out.println("3: Schedule Driver for Race");
                 System.out.println("4: Create new Race");
                 System.out.println("5: Load drivers from file (demo mode)");
-                System.out.println("6: Exit");
+                System.out.println("6: List Drivers");
+                System.out.println("7: List Races");
+                System.out.println("8: Exit");
                 System.out.print("Enter a menu option: ");
 
                 // TODO Only accept numbers, retry if not a number
@@ -43,7 +45,8 @@ public class GKSClient {
                         System.out.print("Enter a phone number: ");
                         request = request + "\n" + consoleReader.readLine();
                         serverOut.writeUTF(request); // Send request to server
-                        System.out.println("ID " + serverIn.readUTF()); // Wait for retrieval of driver ID number
+                        System.out.println("Created Driver with ID of " + serverIn.readUTF()); // Wait for retrieval of driver ID number
+                        System.out.println();
                         break;
                     case 2:
                         break;
@@ -53,15 +56,26 @@ public class GKSClient {
                         System.out.print("Enter a race ID: ");
                         request = request + "\n" + consoleReader.readLine();
                         serverOut.writeUTF(request);
+                        System.out.println();
                         break;
                     case 4:
                         serverOut.writeUTF(request);
+                        System.out.println("Created new Race with ID of " + serverIn.readUTF());
+                        System.out.println();
                         break;
                     case 5:
                         serverOut.writeUTF("\nThe drivers will be chosen from a database of existing members.\n");
                         VerifyLiability checkLiable = new VerifyLiability();
                         serverOut.writeUTF("All drivers have accepted liability.");
                         checkLiable.verifyLiability();
+                        break;
+                    case 6:
+                        break;
+                    case 7:
+                        break;
+                    case 8:
+                        System.out.println("Quitting the Emplyee Terminal...");
+                        System.exit(0);
                         break;
                 }
             }

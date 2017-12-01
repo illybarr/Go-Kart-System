@@ -52,9 +52,18 @@ public class GKSServer extends Thread {
                             assignDriverToRace(Integer.valueOf(request[1]), Integer.parseInt(request[2]));
                             break;
                         case 4:
-                            races.add(new Race());
+                            Race race = new Race();
+                            races.add(race);
+                            outToClient.writeUTF(String.valueOf(race.getId()));
                             break;
                         case 5:
+                            break;
+                        case 6:
+                            break;
+                        case 7:
+                            break;
+                        case 8:
+                            System.out.println("Emplpyee Terminal has disconnected..");
                             break;
                     }
 
