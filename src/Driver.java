@@ -2,8 +2,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-import java.util.Random;
-
 
 public class Driver {
 
@@ -83,27 +81,25 @@ public class Driver {
                  values[count] = readFile.nextLine();
                  count++;
              }
-            
-            System.out.println("Names\t\t\t Phone Number   Kart Number");
-            System.out.println("---------------------------------------------------");
-            for(int x=0; x<inputDrivers; x++)
-            {
-                System.out.println(values[x] + "    #" + kartCount);
-                kartCount++;
-            }
-            
+
             //schedule a race time for the existing drivers
             Employee kart1 = new Employee();   
             kart1.scheduleRace();
             System.out.println("");
                        
             
-            System.out.println("Names\t\t\t Phone Number    Race Time");
-            System.out.println("---------------------------------------------------");
-            for(int x=0; x<inputDrivers; x++)
-            {
-                System.out.println(values[x] + "   " + times[x]);
-            }
+           System.out.println("Names\t\t\t Phone Number   KartNumber   Race Times");
+           System.out.println("---------------------------------------------------");
+           Arrays.sort(times, 0, inputDrivers);
+            
+           for(int x=0; x<inputDrivers; x++)
+           {
+               System.out.println(values[x] + "   #" + kartCount+ "   " + times[x]);
+               kartCount++;
+           }
+            
+           sc.close();
+           readFile.close();
                                                                                 
     }
 
