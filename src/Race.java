@@ -5,7 +5,7 @@ public class Race {
     
     private float startTime;
     private int id;
-    private int lastId = 0;
+    private static int lastId = 0;
     private ArrayList<Driver> drivers = new ArrayList<Driver>();
 
     Race() {
