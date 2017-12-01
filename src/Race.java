@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Race {
@@ -5,8 +6,7 @@ public class Race {
     private float startTime;
     private int id;
     private int lastId = 0;
-    private Driver[] drivers;
-    
+    private ArrayList<Driver> drivers = new ArrayList<Driver>();
 
     Race() {
         this.id = ++lastId;
@@ -24,6 +24,14 @@ public class Race {
 
     float getStartTime() {
         return startTime;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void addDriver(Driver driver) {
+        drivers.add(driver);
     }
     
     void scheduleRace()

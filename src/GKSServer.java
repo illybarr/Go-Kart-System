@@ -6,11 +6,12 @@ import java.util.ArrayList;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class GKSServer extends Thread {
 
-    ArrayList<Driver> drivers = new ArrayList<Driver>();
     ArrayList<Race> races = new ArrayList<Race>();
+    ArrayList<Driver> drivers = new ArrayList<Driver>();
 
     private ServerSocket serverSocket;
 
@@ -45,11 +46,13 @@ public class GKSServer extends Thread {
                                 outToClient.writeUTF(String.valueOf(drivers.get(drivers.size()-1).getId()));
                             break;
                         case 2:
+
                             break;
                         case 3:
+                            assignDriverToRace(Integer.valueOf(request[1]), Integer.parseInt(request[2]));
                             break;
                         case 4:
-                            // Call method to load drivers from file
+                            races.add(new Race());
                             break;
                         case 5:
                             break;
@@ -76,5 +79,32 @@ public class GKSServer extends Thread {
 
         System.out.println("Server started.");
         t.start();
+    }
+
+    private void assignDriverToRace(int driverId, int raceId) {
+        int driverIndex = -1;
+        int raceIndex = -1;
+
+        for(Driver d : drivers) {
+            if(d.getId() == driverId)
+                driverIndex = drivers.indexOf(d);
+        }
+        if(driverIndex == -1) {
+            System.out.println("Driver could not be foudnd");
+            return;
+        }
+
+        for(Race r : races) {
+            if(r.getId() == raceId)
+                raceIndex = races.indexOf(r);
+        }
+        if(raceIndex == -1) {
+            System.out.println("Race could not be foudnd");
+            return;
+        }
+
+        drivers.get(driverIndex).setAssignedRace(races.get(raceIndex));
+        races.get(raceIndex).addDriver(drivers.get(driverIndex));
+        System.out.println("Assigned driver with ID "+ driverId + " to race with ID " + raceId);
     }
 }

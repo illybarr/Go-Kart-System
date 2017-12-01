@@ -20,44 +20,50 @@ public class GKSClient {
             // Set up reader to catch input from user input
             BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
 
-            // TODO Include the menu system as a loop
+            while(true) {
+                // TODO Include the menu system as a loop
 
-            System.out.println("------ Menu ------");
-            System.out.println("1: Create new driver");
-            System.out.println("2: Assign kart to driver");
-            System.out.println("3: Schedule driver for race");
-            System.out.println("4: Load drivers from file");
-            System.out.println("5: Exit");
-            System.out.print("Enter a menu option: ");
+                System.out.println("------ Menu ------");
+                System.out.println("1: Create new Driver");
+                System.out.println("2: Assign Kart to Driver");
+                System.out.println("3: Schedule Driver for Race");
+                System.out.println("4: Create new Race");
+                System.out.println("5: Load drivers from file (demo mode)");
+                System.out.println("6: Exit");
+                System.out.print("Enter a menu option: ");
 
-            // TODO Only accept numbers, retry if not a number
-            int command = Integer.parseInt(consoleReader.readLine());
-            String request = Integer.toString(command); // Create request to be built and sent to server
+                // TODO Only accept numbers, retry if not a number
+                int command = Integer.parseInt(consoleReader.readLine());
+                String request = Integer.toString(command); // Create request to be built and sent to server
 
-            switch(command) {
-                case 1:
-                    System.out.print("Enter the drivers name: ");
-                    request = request + "\n" + consoleReader.readLine();
-                    System.out.print("Enter a phone number: ");
-                    request = request + "\n" + consoleReader.readLine();
-                    serverOut.writeUTF(request); // Send request to server
-                    System.out.println("ID " + serverIn.readUTF()); // Wait for retrieval of driver ID number
-                    break;
-                case 2:
-                    System.out.print("Enter the drivers ID number: ");
-                    request = request + "\n" + consoleReader.readLine();
-                    System.out.print("Enter a race ID: ");
-                    request = request + "\n" + consoleReader.readLine();
-                    serverOut.writeBytes(request);
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    serverOut.writeUTF("\nThe drivers will be chosen from a database of existing members.\n");
-                    VerifyLiability checkLiable = new VerifyLiability();
-                    serverOut.writeUTF("All drivers have accepted liability.");
-                    checkLiable.verifyLiability();
-                    break;
+                switch (command) {
+                    case 1:
+                        System.out.print("Enter the drivers name: ");
+                        request = request + "\n" + consoleReader.readLine();
+                        System.out.print("Enter a phone number: ");
+                        request = request + "\n" + consoleReader.readLine();
+                        serverOut.writeUTF(request); // Send request to server
+                        System.out.println("ID " + serverIn.readUTF()); // Wait for retrieval of driver ID number
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        System.out.print("Enter the drivers ID number: ");
+                        request = request + "\n" + consoleReader.readLine();
+                        System.out.print("Enter a race ID: ");
+                        request = request + "\n" + consoleReader.readLine();
+                        serverOut.writeUTF(request);
+                        break;
+                    case 4:
+                        serverOut.writeUTF(request);
+                        break;
+                    case 5:
+                        serverOut.writeUTF("\nThe drivers will be chosen from a database of existing members.\n");
+                        VerifyLiability checkLiable = new VerifyLiability();
+                        serverOut.writeUTF("All drivers have accepted liability.");
+                        checkLiable.verifyLiability();
+                        break;
+                }
             }
 
             //out.writeUTF(in.readLine());

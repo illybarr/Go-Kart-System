@@ -7,12 +7,12 @@ import java.util.Random;
 
 public class Driver {
 
-    public String name;
-    public long phoneNumber;
+    private String name;
+    private long phoneNumber;
     private int id;
     private static int lastId = 0;
+    private Race assignedRace;
 
-    public Race assignedRace;
     public static int inputDrivers;
 
     Driver() {
@@ -52,6 +52,10 @@ public class Driver {
     void setPhoneNumber(long number)
     {
         this.phoneNumber=number;
+    }
+
+    public void setAssignedRace(Race race) {
+        assignedRace = race;
     }
 
     public int getId() {
